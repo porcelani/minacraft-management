@@ -1,14 +1,14 @@
 package com.openhack;
 
-public class Manicraft {
+public class Minecraft {
     private static final long serialVersionUID = -6888542263201514002L;
 
     private final String name;
     private final Endpoints endpoints;
 
-    public Manicraft(String name, String endpoints) {
+    public Minecraft(String name, String endpoints) {
 
-        this.name = getName(name);
+        this.name = name;
         this.endpoints = new Endpoints(endpoints, endpoints);
     }
 
@@ -21,8 +21,4 @@ public class Manicraft {
     }
 
 
-
-    private String getName(String name) {
-        return name != null ? name : "tenant" + ((int) Math.floor(Math.random() * 10));
-    }
 }
