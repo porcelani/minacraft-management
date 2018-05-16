@@ -22,28 +22,34 @@ public class ManicraftRepository {
 
         CoreV1Api api = new CoreV1Api();
 
-        V1ServiceList v1ServiceList = api.listNamespacedService("default", null, null, null, null, null, null, null, null, null);
+        try {
+            V1ServiceList v1ServiceList = api.listNamespacedService("default", null, null, null, null, null, null, null, null, null);
+            List<V1Service> items = v1ServiceList.getItems();
+
+            V1Service minecraftService = items.stream()
+                    .filter(v1Service -> v1Service.getMetadata().getName().equals("minecraft-service"))
+                    .collect(Collectors.toList())
+                    .get(0);
 
 
-        List<V1Service> items = v1ServiceList.getItems();
-
-        V1Service minecraftService = items.stream()
-                .filter(v1Service -> v1Service.getMetadata().getName().equals("minecraft-service"))
-                .collect(Collectors.toList())
-                .get(0);
-
-        List<Manicraft> list = new ArrayList<>();
+            List<Manicraft> list = new ArrayList<>();
 
 
-        List<V1LoadBalancerIngress> ingress = minecraftService.getStatus().getLoadBalancer().getIngress();
-        if(ingress == null){
+            List<V1LoadBalancerIngress> ingress = minecraftService.getStatus().getLoadBalancer().getIngress();
+            if (ingress == null) {
+                return list;
+            }
+
+            for (V1LoadBalancerIngress ingres : ingress) {
+                Manicraft manicraft = new Manicraft(ingres.getHostname(), ingres.getIp());
+                list.add(manicraft);
+            }
             return list;
+
+        } catch (Exception e) {
+            return new ArrayList<>();
         }
 
-        for (V1LoadBalancerIngress ingres : ingress) {
-            Manicraft manicraft = new Manicraft(ingres.getHostname(), ingres.getIp());
-            list.add(manicraft);
-        }
-        return list;
+
     }
 }
