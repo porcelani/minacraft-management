@@ -1,9 +1,10 @@
 package com.openhack;
 
+import io.kubernetes.client.ApiException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -12,10 +13,8 @@ public class ManicraftController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    List<Manicraft> getAllManicrafts() {
-        ArrayList arrays = new ArrayList();
-        arrays.add(new Manicraft("name1", "10.10.10.10"));
-        return arrays;
+    List<Manicraft> getAllManicrafts() throws IOException, ApiException {
+        return  ManicraftRepository.find();
     }
 
     @RequestMapping(method = RequestMethod.POST)
