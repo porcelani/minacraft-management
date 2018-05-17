@@ -66,3 +66,17 @@ Demonstrate your web application to a coach, and be sure to point out the manage
 - https://openhacks.azurewebsites.net/
 - https://kubernetes.io/docs/reference/api-concepts/
 - https://github.com/kubernetes-client/java/
+- https://docs.microsoft.com/en-us/cli/azure/interactive-azure-cli?view=azure-cli-latest
+
+
+## Commands
+Copy credential:
+```
+az akget-credentialsse --name hdKubsCluster -g myKubsCluste
+```
+
+Kubernetes dashboard:
+```
+az aks browse --resource-group ajakscluster --name ajAKSCluster
+```
+
