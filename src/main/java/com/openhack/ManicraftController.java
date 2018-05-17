@@ -19,9 +19,8 @@ public class ManicraftController {
 
 
     @RequestMapping(value="/{size}", method=RequestMethod.GET)
-    List<Minecraft> addManicraft(@PathVariable Integer size) {
-        System.out.print(size);
-
+    List<Minecraft> addManicraft(@PathVariable Integer size)  throws IOException, ApiException{
+        ManicraftRepository.resize(size);
 
         ArrayList arrayList = new ArrayList();
         return arrayList;

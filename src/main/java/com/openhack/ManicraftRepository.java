@@ -3,10 +3,10 @@ package com.openhack;
 import io.kubernetes.client.ApiClient;
 import io.kubernetes.client.ApiException;
 import io.kubernetes.client.Configuration;
+import io.kubernetes.client.apis.AppsV1beta1Api;
+import io.kubernetes.client.apis.AutoscalingV1Api;
 import io.kubernetes.client.apis.CoreV1Api;
-import io.kubernetes.client.models.V1ObjectMeta;
-import io.kubernetes.client.models.V1Pod;
-import io.kubernetes.client.models.V1PodList;
+import io.kubernetes.client.models.*;
 import io.kubernetes.client.util.Config;
 
 import java.io.IOException;
@@ -47,5 +47,10 @@ public class ManicraftRepository {
         }
 
 
+    }
+
+    public static void resize(Integer size) {
+        ExecuteShellCommand com = new ExecuteShellCommand();
+        System.out.println(com.executeCommand("kubectl scale statefulsets/minecraft --replicas="+size));
     }
 }
