@@ -1,4 +1,4 @@
-package com.openhack;
+package com.openhack.util;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

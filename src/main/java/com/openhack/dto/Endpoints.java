@@ -1,4 +1,4 @@
-package com.openhack;
+package com.openhack.dto;
 
 public class Endpoints {
     private static final long serialVersionUID = -68885422632015002L;

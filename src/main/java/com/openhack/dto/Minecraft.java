@@ -1,4 +1,4 @@
-package com.openhack;
+package com.openhack.dto;
 
 public class Minecraft {
     private static final long serialVersionUID = -6888542263201514002L;

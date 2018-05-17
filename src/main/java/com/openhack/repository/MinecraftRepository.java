@@ -1,10 +1,10 @@
-package com.openhack;
+package com.openhack.repository;
 
+import com.openhack.dto.Minecraft;
+import com.openhack.util.ExecuteShellCommand;
 import io.kubernetes.client.ApiClient;
 import io.kubernetes.client.ApiException;
 import io.kubernetes.client.Configuration;
-import io.kubernetes.client.apis.AppsV1beta1Api;
-import io.kubernetes.client.apis.AutoscalingV1Api;
 import io.kubernetes.client.apis.CoreV1Api;
 import io.kubernetes.client.models.*;
 import io.kubernetes.client.util.Config;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ManicraftRepository {
+public class MinecraftRepository {
 
     public static List<Minecraft> find() throws IOException, ApiException {
         try {

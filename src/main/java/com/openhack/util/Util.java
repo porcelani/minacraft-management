@@ -1,4 +1,4 @@
-package com.openhack;
+package com.openhack.util;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
